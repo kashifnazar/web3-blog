@@ -27,7 +27,7 @@ describe("Blog", function () {
     
     const posts = await blog.fetchPosts()
 
-    expect(posts[0].title).to.equal("My first post")
+    expect(posts[0].title).to.equal("My updated post")
   })
 
   it("Should add update the name", async function () {

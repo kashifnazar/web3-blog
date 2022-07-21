@@ -24,14 +24,14 @@ contract Blog {
     event PostCreated(uint id, string title, string hash);
     event PostUpdated(uint id, string title, string hash, bool published);
 
-    constructor(String memory _name) {
+    constructor(string memory _name) {
         console.log("Deploying Blog with name:", _name);
         name = _name;
         owner = msg.sender;
     }
 
     function updateName(string memory _name) public {
-        name = _name
+        name = _name;
     }
 
     function transferOwnership(address newOwner) public onlyOwner {
@@ -73,10 +73,11 @@ contract Blog {
     function fetchPosts() public view returns (Post[] memory) {
         uint itemCount = _postIds.current();
 
+        Post[] memory posts = new Post[](itemCount);
         for(uint i = 0; i < itemCount; i++) {
             uint currentId = i + 1;
             Post storage currentItem = idToPost[currentId];
-            posts[i] = currentItem
+            posts[i] = currentItem;
         }
 
         return posts;
